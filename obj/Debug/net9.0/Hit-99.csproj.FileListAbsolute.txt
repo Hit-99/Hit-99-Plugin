@@ -10,3 +10,4 @@ G:\Hit-99\Hit99-Plugin\Hit-99\obj\Debug\net9.0\Hit-99.dll
 G:\Hit-99\Hit99-Plugin\Hit-99\obj\Debug\net9.0\refint\Hit-99.dll
 G:\Hit-99\Hit99-Plugin\Hit-99\obj\Debug\net9.0\Hit-99.pdb
 G:\Hit-99\Hit99-Plugin\Hit-99\obj\Debug\net9.0\ref\Hit-99.dll
+G:\Hit-99\Hit99-Plugin\Hit-99\obj\Debug\net9.0\Hit-99.sourcelink.json
