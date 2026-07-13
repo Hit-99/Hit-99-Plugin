@@ -5,13 +5,14 @@ using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 using CounterStrikeSharp.API.Modules.Commands;
+using CounterStrikeSharp.API.Modules.Events;
 
 namespace Hit_99;
 
 public class Hit_99 : BasePlugin
 {
 
-    private const string Version = "0.0.3";
+    private const string Version = "0.0.4";
     public override string ModuleName => "Hit-99 Plugin";
     public override string ModuleVersion => Version;
     public override string ModuleAuthor => "hyper";
@@ -28,7 +29,7 @@ public class Hit_99 : BasePlugin
     private List<string> AutoMessages = new()
     {
         $"{ChatColors.Grey}Join our Discord Community: {ChatColors.Green}https://discord.hit99.pro",
-        $"{ChatColors.Grey}Type {ChatColors.Green}!help {ChatColors.Grey}to see a list of commands",
+        $"{ChatColors.Grey}View a list of commands: {ChatColors.Green}!help",
         $"{ChatColors.Grey}Add Hit-99 to favorites: {ChatColors.Green}cs.hit99.pro:26448",
         $"{ChatColors.Grey}Give feedback or report bugs: {ChatColors.Green}https://discord.hit99.pro",
         $"{ChatColors.Grey}By playing on Hit-99, you agree to the rules: {ChatColors.Green}!rules",
@@ -64,6 +65,24 @@ private int CurrentMessageIndex = 0;
 
     AddTimer(autoMessageTimer, BroadcastAutoMessage);
 }
+
+    // JOIN MESSAGE
+
+    [GameEventHandler]
+    public HookResult OnPlayerConnectFull(EventPlayerConnectFull @event, GameEventInfo info)
+    {
+        CCSPlayerController? player = @event.Userid;
+
+        if (player == null || !player.IsValid)
+            return HookResult.Continue;
+        player.PrintToChat(" ");
+        player.PrintToChat($"Welcome to {ChatColors.Red}Hit-99 {ChatColors.White}Community Competitive {ChatColors.Green}{player.PlayerName}{ChatColors.White}!");
+        player.PrintToChat($"Join our Discord Community: {ChatColors.Green}{discordLink}");
+        player.PrintToChat($"Type {ChatColors.Green}!help{ChatColors.White} for a list of commands");
+        player.PrintToChat(" ");
+
+        return HookResult.Continue;
+    }
 
     // COMMANDS
 
