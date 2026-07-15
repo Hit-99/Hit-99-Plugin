@@ -6,13 +6,38 @@ using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Modules.Utils;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Events;
+using CounterStrikeSharp.API.Modules.Timers;
 
 namespace Hit_99;
 
-public class Hit_99 : BasePlugin
+public class Hit99Config : BasePluginConfig
 {
+    public float AutoMessageTimer { get; set; } = 90.0f;
 
-    private const string Version = "0.0.4";
+    public List<string> AutoMessages { get; set; } = new()
+    {
+        "{GREY}Join our Discord Community: {GREEN}https://discord.hit99.pro",
+        "{GREY}View a list of commands: {GREEN}!help",
+        "{GREY}Add Hit-99 to favorites: {GREEN}cs.hit99.pro:26448"
+    };
+
+    public List<string> JoinMessages { get; set; } = new()
+    {
+        " ",
+        "Welcome to {RED}Hit-99 {WHITE}Community Competitive {GREEN}{PLAYER}",
+        "Join our Discord: {GREEN}https://discord.hit99.pro",
+        "Type {GREEN}!help {WHITE}for commands",
+        " "
+    };
+
+    public string DiscordLink { get; set; } = "https://discord.hit99.pro";
+    public string FluxerLink { get; set; } = "https://fluxer.hit99.pro";
+}
+public class Hit_99 : BasePlugin, IPluginConfig<Hit99Config>
+{
+    public Hit99Config Config { get; set; } = new();
+
+    private const string Version = "0.5.0";
     public override string ModuleName => "Hit-99 Plugin";
     public override string ModuleVersion => Version;
     public override string ModuleAuthor => "hyper";
@@ -21,50 +46,40 @@ public class Hit_99 : BasePlugin
     public string PluginPrefix = $"[{ChatColors.Red}Hit-99{ChatColors.White}] ";
     public string ConsolePluginPrefix = $"[Hit-99 v{Version}] ";
 
-    public string discordLink = "https://discord.hit99.pro";
-    public string fluxerLink = "https://fluxer.hit99.pro";
+    public void OnConfigParsed(Hit99Config config)
+{
+    Config = config;
+}
 
-    public float autoMessageTimer = 60.0f;
-
-    private List<string> AutoMessages = new()
-    {
-        $"{ChatColors.Grey}Join our Discord Community: {ChatColors.Green}https://discord.hit99.pro",
-        $"{ChatColors.Grey}View a list of commands: {ChatColors.Green}!help",
-        $"{ChatColors.Grey}Add Hit-99 to favorites: {ChatColors.Green}cs.hit99.pro:26448",
-        $"{ChatColors.Grey}Give feedback or report bugs: {ChatColors.Green}https://discord.hit99.pro",
-        $"{ChatColors.Grey}By playing on Hit-99, you agree to the rules: {ChatColors.Green}!rules",
-    };
-
-private int CurrentMessageIndex = 0;
+    private int CurrentMessageIndex = 0;
     
     public override void Load(bool hotReload)
     {
         Console.WriteLine($"{ConsolePluginPrefix}Plugin loaded!");
 
-        AddTimer(autoMessageTimer, BroadcastAutoMessage);
+        AddTimer(Config.AutoMessageTimer, BroadcastAutoMessage, TimerFlags.REPEAT);
     }
 
     // AUTO MESSAGE
 
     private void BroadcastAutoMessage()
-{
-    if (AutoMessages.Count == 0)
-        return;
+    {
+        if (Config.AutoMessages.Count == 0)
+            return;
 
-    if (Utilities.GetPlayers().Count == 0)
-    return;
+        if (Utilities.GetPlayers().Count == 0)
+            return;
 
-    string message = AutoMessages[CurrentMessageIndex];
+        string raw = Config.AutoMessages[CurrentMessageIndex];
+        string message = FormatMessage(raw, null);
 
-    Server.PrintToChatAll($"{PluginPrefix}{message}");
+        Server.PrintToChatAll($"{PluginPrefix}{message}");
 
-    CurrentMessageIndex++;
+        CurrentMessageIndex++;
 
-    if (CurrentMessageIndex >= AutoMessages.Count)
-        CurrentMessageIndex = 0;
-
-    AddTimer(autoMessageTimer, BroadcastAutoMessage);
-}
+        if (CurrentMessageIndex >= Config.AutoMessages.Count)
+            CurrentMessageIndex = 0;
+    }
 
     // JOIN MESSAGE
 
@@ -75,11 +90,10 @@ private int CurrentMessageIndex = 0;
 
         if (player == null || !player.IsValid)
             return HookResult.Continue;
-        player.PrintToChat(" ");
-        player.PrintToChat($"Welcome to {ChatColors.Red}Hit-99 {ChatColors.White}Community Competitive {ChatColors.Green}{player.PlayerName}{ChatColors.White}!");
-        player.PrintToChat($"Join our Discord Community: {ChatColors.Green}{discordLink}");
-        player.PrintToChat($"Type {ChatColors.Green}!help{ChatColors.White} for a list of commands");
-        player.PrintToChat(" ");
+        foreach (var raw in Config.JoinMessages)
+        {
+            player.PrintToChat(FormatMessage(raw, player));
+        }
 
         return HookResult.Continue;
     }
@@ -129,7 +143,7 @@ private int CurrentMessageIndex = 0;
             return;
         }
 
-        player.PrintToChat($"{PluginPrefix}Join the Hit-99 Discord Community: {ChatColors.Green}{discordLink}");
+        player.PrintToChat($"{PluginPrefix}Join the Hit-99 Discord Community: {ChatColors.Green}{Config.DiscordLink}");
     }
 
     [ConsoleCommand("fluxer", "Replies with fluxer link")]
@@ -140,6 +154,51 @@ private int CurrentMessageIndex = 0;
             return;
         }
 
-        player.PrintToChat($"{PluginPrefix}Join the Hit-99 Fluxer Community: {ChatColors.Green}{fluxerLink}");
+        player.PrintToChat($"{PluginPrefix}Join the Hit-99 Fluxer Community: {ChatColors.Green}{Config.FluxerLink}");
+    }
+
+    private string FormatMessage(string message, CCSPlayerController? player)
+    {
+        return message
+            .Replace("{RED}", ChatColors.Red.ToString())
+            .Replace("{GREEN}", ChatColors.Green.ToString())
+            .Replace("{WHITE}", ChatColors.White.ToString())
+            .Replace("{GREY}", ChatColors.Grey.ToString())
+            .Replace("{PLAYER}", player?.PlayerName ?? "");
     }
 }
+
+/*
+STATS TO TRACK
+
+kills
+deaths
+assists
+HS%
+total damage
+
+MVPs
+utility damage
+enemies flashed
+KDR
+ADR
+
+playtime
+map win/loss
+
+post game data
+
+number of joins
+first join
+
+*/
+
+/*
+
+OTHER STUFF
+
+scoreboard
+
+match history
+
+*/
