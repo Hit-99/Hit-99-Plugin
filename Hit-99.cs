@@ -32,12 +32,14 @@ public class Hit99Config : BasePluginConfig
 
     public string DiscordLink { get; set; } = "https://discord.hit99.pro";
     public string FluxerLink { get; set; } = "https://fluxer.hit99.pro";
+
+    public string JoinCountMessage { get; set; } = "{GREEN}{PLAYER}{WHITE} joined {RED}Hit-99{WHITE} for the {GREEN}{JOINS}{WHITE} time!";
 }
 public class Hit_99 : BasePlugin, IPluginConfig<Hit99Config>
 {
     public Hit99Config Config { get; set; } = new();
 
-    private const string Version = "0.5.0";
+    private const string Version = "0.5.1";
     public override string ModuleName => "Hit-99 Plugin";
     public override string ModuleVersion => Version;
     public override string ModuleAuthor => "hyper";
@@ -46,18 +48,37 @@ public class Hit_99 : BasePlugin, IPluginConfig<Hit99Config>
     public string PluginPrefix = $"[{ChatColors.Red}Hit-99{ChatColors.White}] ";
     public string ConsolePluginPrefix = $"[Hit-99 v{Version}] ";
 
-    public void OnConfigParsed(Hit99Config config)
-{
-    Config = config;
-}
+    public void OnConfigParsed(Hit99Config config){Config = config;}
 
     private int CurrentMessageIndex = 0;
     
     public override void Load(bool hotReload)
     {
-        Console.WriteLine($"{ConsolePluginPrefix}Plugin loaded!");
+        Console.WriteLine($@"
+   ___     ___  ___  _________             _______  _______
+  |   |   |   ||   ||         |           |       ||       |
+  |   |___|   ||   ||__     __|  _______  |    _  ||    _  |
+  |           ||   |   |   |    |       | |   |_| ||   |_| |
+  |    ___    ||   |   |   |    |_______| |____   ||____   |
+  |   |   |   ||   |   |   |               ____|  | ____|  |
+  |___|   |___||___|   |___|              |_______||_______|
+
+           https://github.com/Hyp3r7/Hit-99-Plugin.git
+                            v{Version}
+");
 
         AddTimer(Config.AutoMessageTimer, BroadcastAutoMessage, TimerFlags.REPEAT);
+    }
+
+    private string FormatMessage(string message, CCSPlayerController? player, int? joinCount = null)
+    {
+    return message
+        .Replace("{RED}", ChatColors.Red.ToString())
+        .Replace("{GREEN}", ChatColors.Green.ToString())
+        .Replace("{WHITE}", ChatColors.White.ToString())
+        .Replace("{GREY}", ChatColors.Grey.ToString())
+        .Replace("{PLAYER}", player?.PlayerName ?? "")
+        .Replace("{JOINS}", joinCount?.ToString() ?? "");
     }
 
     // AUTO MESSAGE
@@ -90,6 +111,9 @@ public class Hit_99 : BasePlugin, IPluginConfig<Hit99Config>
 
         if (player == null || !player.IsValid)
             return HookResult.Continue;
+
+        // NORMAL JOIN MESSAGE
+
         foreach (var raw in Config.JoinMessages)
         {
             player.PrintToChat(FormatMessage(raw, player));
@@ -155,16 +179,6 @@ public class Hit_99 : BasePlugin, IPluginConfig<Hit99Config>
         }
 
         player.PrintToChat($"{PluginPrefix}Join the Hit-99 Fluxer Community: {ChatColors.Green}{Config.FluxerLink}");
-    }
-
-    private string FormatMessage(string message, CCSPlayerController? player)
-    {
-        return message
-            .Replace("{RED}", ChatColors.Red.ToString())
-            .Replace("{GREEN}", ChatColors.Green.ToString())
-            .Replace("{WHITE}", ChatColors.White.ToString())
-            .Replace("{GREY}", ChatColors.Grey.ToString())
-            .Replace("{PLAYER}", player?.PlayerName ?? "");
     }
 }
 
