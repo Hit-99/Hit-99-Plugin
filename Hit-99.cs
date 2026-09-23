@@ -32,6 +32,8 @@ public class Hit99Config : BasePluginConfig
 
     public string DiscordLink { get; set; } = "https://discord.hit99.pro";
     public string FluxerLink { get; set; } = "https://fluxer.hit99.pro";
+    public string SteamLink { get; set; } = "https://steam.hit99.pro";
+    public string FaceitLink { get; set; } = "https://faceit.hit99.pro";
 
     public string JoinCountMessage { get; set; } = "{GREEN}{PLAYER}{WHITE} joined {RED}Hit-99{WHITE} for the {GREEN}{JOINS}{WHITE} time!";
 }
@@ -39,7 +41,7 @@ public class Hit_99 : BasePlugin, IPluginConfig<Hit99Config>
 {
     public Hit99Config Config { get; set; } = new();
 
-    private const string Version = "0.5.1";
+    private const string Version = "0.5.2";
     public override string ModuleName => "Hit-99 Plugin";
     public override string ModuleVersion => Version;
     public override string ModuleAuthor => "hyper";
@@ -179,6 +181,28 @@ public class Hit_99 : BasePlugin, IPluginConfig<Hit99Config>
         }
 
         player.PrintToChat($"{PluginPrefix}Join the Hit-99 Fluxer Community: {ChatColors.Green}{Config.FluxerLink}");
+    }
+
+    [ConsoleCommand("steam", "Replies with steam link")]
+    public void OnSteamCommand(CCSPlayerController? player, CommandInfo command)
+    {
+        if (player == null)
+        {
+            return;
+        }
+
+        player.PrintToChat($"{PluginPrefix}Join the Hit-99 Stean Community: {ChatColors.Green}{Config.SteamLink}");
+    }
+
+    [ConsoleCommand("faceit", "Replies with faceit link")]
+    public void OnFaceitCommand(CCSPlayerController? player, CommandInfo command)
+    {
+        if (player == null)
+        {
+            return;
+        }
+
+        player.PrintToChat($"{PluginPrefix}Join the Hit-99 Faceit Club: {ChatColors.Green}{Config.FaceitLink}");
     }
 }
 

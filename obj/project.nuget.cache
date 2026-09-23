@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "r0iUnk/Odl0=",
+  "dgSpecHash": "IFxSpqhwKAQ=",
   "success": true,
-  "projectFilePath": "F:\\Hit-99\\Hit-99-Plugin\\Hit-99.csproj",
+  "projectFilePath": "f:\\Hit-99\\Hit-99-Plugin\\Hit-99.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hyper\\.nuget\\packages\\counterstrikesharp.api\\1.0.220\\counterstrikesharp.api.1.0.220.nupkg.sha512",
     "C:\\Users\\hyper\\.nuget\\packages\\mcmaster.netcore.plugins\\1.4.0\\mcmaster.netcore.plugins.1.4.0.nupkg.sha512",
@@ -51,9 +51,9 @@
     "C:\\Users\\hyper\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\hyper\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
     "C:\\Users\\hyper\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512",
-    "C:\\Users\\hyper\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.19\\microsoft.netcore.app.ref.9.0.19.nupkg.sha512",
-    "C:\\Users\\hyper\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.19\\microsoft.windowsdesktop.app.ref.9.0.19.nupkg.sha512",
-    "C:\\Users\\hyper\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.19\\microsoft.aspnetcore.app.ref.9.0.19.nupkg.sha512"
+    "C:\\Users\\hyper\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.20\\microsoft.netcore.app.ref.9.0.20.nupkg.sha512",
+    "C:\\Users\\hyper\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.20\\microsoft.windowsdesktop.app.ref.9.0.20.nupkg.sha512",
+    "C:\\Users\\hyper\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.20\\microsoft.aspnetcore.app.ref.9.0.20.nupkg.sha512"
   ],
   "logs": []
 }

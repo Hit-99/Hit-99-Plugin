@@ -1,0 +1,13 @@
+f:\Hit-99\Hit-99-Plugin\bin\Any CPU\Debug\net9.0\Hit-99.deps.json
+f:\Hit-99\Hit-99-Plugin\bin\Any CPU\Debug\net9.0\Hit-99.dll
+f:\Hit-99\Hit-99-Plugin\bin\Any CPU\Debug\net9.0\Hit-99.pdb
+f:\Hit-99\Hit-99-Plugin\obj\Any CPU\Debug\net9.0\Hit-99.csproj.AssemblyReference.cache
+f:\Hit-99\Hit-99-Plugin\obj\Any CPU\Debug\net9.0\Hit-99.GeneratedMSBuildEditorConfig.editorconfig
+f:\Hit-99\Hit-99-Plugin\obj\Any CPU\Debug\net9.0\Hit-99.AssemblyInfoInputs.cache
+f:\Hit-99\Hit-99-Plugin\obj\Any CPU\Debug\net9.0\Hit-99.AssemblyInfo.cs
+f:\Hit-99\Hit-99-Plugin\obj\Any CPU\Debug\net9.0\Hit-99.csproj.CoreCompileInputs.cache
+f:\Hit-99\Hit-99-Plugin\obj\Any CPU\Debug\net9.0\Hit-99.sourcelink.json
+f:\Hit-99\Hit-99-Plugin\obj\Any CPU\Debug\net9.0\Hit-99.dll
+f:\Hit-99\Hit-99-Plugin\obj\Any CPU\Debug\net9.0\refint\Hit-99.dll
+f:\Hit-99\Hit-99-Plugin\obj\Any CPU\Debug\net9.0\Hit-99.pdb
+f:\Hit-99\Hit-99-Plugin\obj\Any CPU\Debug\net9.0\ref\Hit-99.dll
