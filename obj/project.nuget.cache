@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IFxSpqhwKAQ=",
+  "dgSpecHash": "gG2AVw+Ic4E=",
   "success": true,
-  "projectFilePath": "f:\\Hit-99\\Hit-99-Plugin\\Hit-99.csproj",
+  "projectFilePath": "F:\\Hit-99\\Hit-99-Plugin\\Hit-99.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hyper\\.nuget\\packages\\counterstrikesharp.api\\1.0.220\\counterstrikesharp.api.1.0.220.nupkg.sha512",
     "C:\\Users\\hyper\\.nuget\\packages\\mcmaster.netcore.plugins\\1.4.0\\mcmaster.netcore.plugins.1.4.0.nupkg.sha512",

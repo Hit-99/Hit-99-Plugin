@@ -65,7 +65,7 @@ public class Hit_99 : BasePlugin, IPluginConfig<Hit99Config>
   |   |   |   ||   |   |   |               ____|  | ____|  |
   |___|   |___||___|   |___|              |_______||_______|
 
-           https://github.com/Hyp3r7/Hit-99-Plugin.git
+           https://github.com/Hit-99/Hit-99-Plugin.git
                             v{Version}
 ");
 

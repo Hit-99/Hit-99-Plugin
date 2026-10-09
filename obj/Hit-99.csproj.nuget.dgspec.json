@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "f:\\Hit-99\\Hit-99-Plugin\\Hit-99.csproj": {}
+    "F:\\Hit-99\\Hit-99-Plugin\\Hit-99.csproj": {}
   },
   "projects": {
-    "f:\\Hit-99\\Hit-99-Plugin\\Hit-99.csproj": {
+    "F:\\Hit-99\\Hit-99-Plugin\\Hit-99.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "f:\\Hit-99\\Hit-99-Plugin\\Hit-99.csproj",
+        "projectUniqueName": "F:\\Hit-99\\Hit-99-Plugin\\Hit-99.csproj",
         "projectName": "Hit-99",
-        "projectPath": "f:\\Hit-99\\Hit-99-Plugin\\Hit-99.csproj",
+        "projectPath": "F:\\Hit-99\\Hit-99-Plugin\\Hit-99.csproj",
         "packagesPath": "C:\\Users\\hyper\\.nuget\\packages\\",
-        "outputPath": "f:\\Hit-99\\Hit-99-Plugin\\obj\\",
+        "outputPath": "F:\\Hit-99\\Hit-99-Plugin\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hyper\\AppData\\Roaming\\NuGet\\NuGet.Config"
